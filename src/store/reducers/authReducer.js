@@ -17,6 +17,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.AUTH_REQUEST_SUCESSO:
       return updateObject(state, { ...action.payload, isLoading: false });
 
+    case actionTypes.STORE_CLEAR_ERROR:
+      return updateObject(state, { error: null });
+
     case actionTypes.AUTH_LOGOUT:
       return initialState;
 

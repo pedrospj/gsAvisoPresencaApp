@@ -13,3 +13,17 @@ export const snackbarTheme = {
     accent: 'red',
   },
 };
+
+export const iconTheme = {
+  ...DefaultTheme,
+  colors: {
+    primary: 'transparent',
+  },
+};
+
+export const redButtonTheme = {
+  ...DefaultTheme,
+  colors: {
+    primary: 'red',
+  },
+};
