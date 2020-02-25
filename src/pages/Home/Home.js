@@ -6,6 +6,7 @@ import * as actions from '../../store/actions/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { Snackbar } from 'react-native-paper';
 import { snackbarTheme } from '../../utils/themes';
+import Success from '../Success';
 
 const Home = () => {
   const [cameraOpen, setCameraOpen] = useState(false);
@@ -26,6 +27,8 @@ const Home = () => {
     console.log(e.data);
     dispatch(actions.realizarLeitura(e.data));
   };
+
+  return <Success />;
 
   return (
     <View style={{ flex: 1 }}>
