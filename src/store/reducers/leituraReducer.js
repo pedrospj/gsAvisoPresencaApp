@@ -20,6 +20,7 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { error: null });
 
     case actionTypes.AUTH_LOGOUT:
+    case actionTypes.LEITURA_CLEAR_EVERYTHING:
       return initialState;
 
     default:

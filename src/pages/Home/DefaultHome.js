@@ -9,7 +9,7 @@ const DefaultHome = ({ handleOpenCamera }) => {
       <Title>Bem-vindo(a) ao gsPresença!</Title>
 
       <Subheading style={styles.message}>
-        Para marcar sua presença abra clique no botão abaixo e leia o QR Code!
+        Clique no botão abaixo para marcar sua presença!
       </Subheading>
 
       <TouchableOpacity onPress={handleOpenCamera} style={styles.qrButton}>

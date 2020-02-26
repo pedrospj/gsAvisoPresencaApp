@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginScreen, HomeScreen } from './pages/index';
+import { LoginScreen, HomeScreen, SuccessScreen } from './pages/index';
 import { useSelector } from 'react-redux';
 
 const Stack = createStackNavigator();
@@ -15,6 +15,11 @@ const Routes = () => {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Success"
+            component={SuccessScreen}
             options={{ headerShown: false }}
           />
         </>

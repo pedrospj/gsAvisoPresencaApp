@@ -12,13 +12,17 @@ export const realizarLeitura = url => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
+      if (!response.data.sucesso) {
+        throw new Error(response.data.mensagem);
+      }
+
       console.log(response.data);
 
       dispatch({
         type: actionTypes.LEITURA_REQUEST_SUCESSO,
         payload: {
           error: null,
-          sucesso: response.data.sucesso,
+          success: response.data.sucesso,
         },
       });
     } catch (error) {
@@ -27,8 +31,17 @@ export const realizarLeitura = url => {
           type: actionTypes.LEITURA_REQUEST_ERRO,
           payload: { error: 'QR Code inválido!' },
         });
+      } else {
+        dispatch({
+          type: actionTypes.LEITURA_REQUEST_ERRO,
+          payload: { error: error.message },
+        });
       }
       console.log(error.message, 'deu erro');
     }
   };
 };
+
+export const leituraClearEverything = () => ({
+  type: actionTypes.LEITURA_CLEAR_EVERYTHING,
+});

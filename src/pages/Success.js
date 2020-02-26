@@ -3,15 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import sucesso from '../../assets/sucesso.json';
-import { useNavigation } from '@react-navigation/native';
 import { primaryBlueTheme } from '../utils/themes';
+import { useDispatch } from 'react-redux';
+import * as actions from '../store/actions/index';
 
-const Success = props => {
-  const navigation = useNavigation();
+const Success = ({ navigation }) => {
+  const dispatch = useDispatch();
+
+  console.log(navigation);
 
   const handleGoBack = () => {
-    console.log('tentou');
-    navigation.navigate('Home');
+    dispatch(actions.leituraClearEverything());
+    navigation.goBack();
   };
 
   return (

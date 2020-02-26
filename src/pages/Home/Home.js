@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import DefaultHome from './DefaultHome';
 import CameraPage from './CameraPage';
@@ -8,13 +8,18 @@ import { Snackbar } from 'react-native-paper';
 import { snackbarTheme } from '../../utils/themes';
 import Success from '../Success';
 
-const Home = () => {
+const Home = ({ navigation }) => {
+  const { error, success } = useSelector(state => state.leitura);
+  useEffect(() => {
+    if (success) {
+      navigation.navigate('Success');
+    }
+  }, [success, navigation]);
+
   const [cameraOpen, setCameraOpen] = useState(false);
 
   const handleOpenCamera = () => setCameraOpen(true);
   const handleCloseCamera = () => setCameraOpen(false);
-
-  const { error } = useSelector(state => state.leitura);
 
   const dispatch = useDispatch();
 
@@ -27,8 +32,6 @@ const Home = () => {
     console.log(e.data);
     dispatch(actions.realizarLeitura(e.data));
   };
-
-  return <Success />;
 
   return (
     <View style={{ flex: 1 }}>
